@@ -19,12 +19,12 @@ import { formScheme } from "./constants";
 
 import type { ChatCompletionUserMessageParam } from "openai/resources/index.mjs";
 
-const API_KEY = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+//const API_KEY = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
 const ConversationPage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionUserMessageParam[]>(
-    []
+    [],
   );
 
   const form = useForm<z.infer<typeof formScheme>>({
@@ -49,7 +49,7 @@ const ConversationPage = () => {
         message: newMessages,
       });
 
-      setMessages(current => [
+      setMessages((current) => [
         ...current,
         userMessage,
         {
@@ -102,7 +102,7 @@ const ConversationPage = () => {
           </Form>
           <div className="space-y-4">
             <div className="flex flex-col-reverse gap-y-4">
-              {messages.map(message => (
+              {messages.map((message) => (
                 <div>
                   <p className="text-sm">{message?.content}</p>
                 </div>
@@ -111,7 +111,7 @@ const ConversationPage = () => {
             </div>
           </div>
           <div className="text-xs text-muted-foreground">
-            <p>{API_KEY}</p>
+            <p>API_KEY for testing</p>
           </div>
         </div>
       </div>
